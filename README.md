@@ -24,36 +24,35 @@ Vggface2|Arcface(s=64,m=0.3)|0.95|99.57/99.83/99.67/99.47/98.90|98.14/99.34/96.8
 Vggface2|Arcface(s=30,m=0.3)|0.97|99.62/99.83/99.63/99.57/99.27|98.13/99.49/97.31/96.17/93.60|94.83/96.97/85.90/83.27/70.53
 Vggface2|Arcface(s=15,m=0.3)|0.95|99.37/99.90/99.43/99.20/98.43|97.33/99.00/95.03/93.68/87.59|91.57/93.07/61.37/52.40/28.40
 
-- **ADM test result on CASIA-Webface & Vggface2**
+- **Test Datasets**
 
-dataset|margin|acc_margin|LFW(acc,1e-1,1e-2,3e-3,1e-3)|CFP-FP|AgeDB_30
+For 1:1 Face comparing,Test dataset is a big problem.now the algorithm can easy reach high accuracy on "LFW",and for Large-Disjoints dataset like "MegaFace" & "Glint Trillion Pairs" the Disjoints contains almost the easy examples so the algorithm only make big difference when the FAR is very low(such as 1e-9),usually it will take several hours to get feature on this dataset,which is very unconvenient for research to judge their algorithm.
+
+Consider there are some small datasets that aimed at hard examples like "CFP-FP"(7000 pairs,Frontal-Profile face is a challenge for most algorithm) & "AgeDB_30"(6000,Age is also challenge),while LFW is aimed at IDs,so we can combine this three dataset as one dataset,which we called "hard-examples test dataset"(which has 9500 positive pairs and 9500 negative pairs)
+
+To avoid random influence, we choose (accuracy,TAR@FAR=1e-1,TAR@FAR=1e-2,TAR@FAR=1e-3,TAR@FAR=3e-4) as our criterion,because there are only 9500 negative pairs,so we choose 3e-4(4 negative pairs) instead of 1e-4(1 negative pairs). 
+
+- **Meaning of S**
+
+To Be Done
+
+- **Seperate Margin(Scale Margin)**
+
+To Be Done
+
+- **Auto Margin**
+
+To Be Done
+
+- **Test on "hard-examples test dataset"**
+
+dataset|margin|acc_margin|HETD(acc,1e-1,1e-2,1e-3,3e-4)
 :---:|:---:|:---:|:---:|:---:|:---:
-Webface|ADM(s=64,m=0.3)|0.95|99.12/99.80/99.03/98.70/97.53|94.94/97.77/88.94/86.19/74.16|93.60/95.03/81.13/72.73/53.10
-Webface|ADM(s=30,m=0.3)|0.95|99.23/99.77/99.23/98.90/97.43|95.54/97.48/91.14/87.42/81.33|93.83/95.87/83.33/78.70/63.00
-Webface|ADM(s=15,m=0.3)|0.95|99.22/99.77/99.30/98.93/96.90|96.27/98.11/91.37/88.39/78.96|93.43/95.50/80.57/74.73/64.37
-
-dataset|margin|acc_margin|LFW(acc,1e-1,1e-2,3e-3,1e-3)|CFP-FP|AgeDB_30
-:---:|:---:|:---:|:---:|:---:|:---:
-Vggface2|ADM(s=64,m=0.3)|0.92|99.58/99.83/99.67/99.53/99.23|97.73/99.00/96.08/94.48/91.28|95.18/96.80/85.13/80.27/71.33
-Vggface2|ADM(s=30,m=0.3)|-|-|-|-
-Vggface2|ADM(s=15,m=0.3)|-|-|-|-
-
-you can see on Webface & Vggface2,the result of Arcface and ADM is quiet close,but Arcface drops a lot when s = 15 on Vggface2.
-
-- Angular Distance
-
-To Be Done
-
-- Meaning of S
-
-To Be Done
-
-- Seperate Margin
-
-To Be Done
-
-- Auto Margin
-
-To Be Done
+Webface|Arcface(s=30,m=0.5)|0.87|95.64/97.54/90.06/78.62/70.19
+Webface|ADSM(s=30,m=0.5)|0.82|95.86/97.66/78.76/70.58
+Vgg2_s+msra_imbalance|Arcface(s=64,m=0.4)|0.94|95.59/97.59/90.32/79.41/68.69
+vgg2_s+msra_imbalance|ADSM(s=64,m=0.4)|0.96|95.57/97.48/90.20/81.38/74.51
+Vgg2+msra+asia|Arcface(s=64,m=0.5)|0.83|98.72/99.35/98.30/96.13/94.79
+Vgg2+msra+asia|ADSM(s=64,m=0.5)|0.85|98.91/99.28/98.62/97.44/96.19
 
 
