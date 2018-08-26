@@ -47,7 +47,7 @@ To Be Done
 - **Test on "hard-examples test dataset"**
 
 dataset|margin|acc_margin|HETD(acc,1e-1,1e-2,1e-3,3e-4)
-:---:|:---:|:---:|:---:|:---:|:---:
+:---:|:---:|:---:|:---:
 Webface|Arcface(s=30,m=0.5)|0.87|95.64/97.54/90.06/78.62/70.19
 Webface|ADSM(s=30,m=0.5)|0.82|95.86/97.66/78.76/70.58
 Vgg2_s+msra_imbalance|Arcface(s=64,m=0.4)|0.94|95.59/97.59/90.32/79.41/68.69
